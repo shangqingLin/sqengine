@@ -1,0 +1,77 @@
+#include "WebGL2DeviceCaps.h"
+
+bool WebGL2DeviceCaps::supperFormatTexture(Format format)
+{
+    switch (format)
+    {
+    case Format::A8:
+    case Format::L8:
+    case Format::LA8:
+    case Format::RGB8:
+    case Format::RGB16F:
+    case Format::RGB32F:
+    case Format::BGRA8:
+    case Format::RGBA8:
+    case Format::SRGB8_A8:
+    case Format::RGBA16F:
+    case Format::RGBA32F:
+    case Format::R5G6B5:
+    case Format::RGB5A1:
+    case Format::RGBA4:
+    case Format::DEPTH:
+    case Format::DEPTH_STENCIL:
+    case Format::BC1:
+    case Format::BC1_ALPHA:
+    case Format::BC1_SRGB:
+    case Format::BC1_SRGB_ALPHA:
+    case Format::BC2:
+    case Format::BC2_SRGB:
+    case Format::BC3:
+    case Format::BC3_SRGB:
+    case Format::ETC_RGB8:
+    case Format::ETC2_RGB8:
+    case Format::ETC2_SRGB8:
+    case Format::ETC2_RGB8_A1:
+    case Format::ETC2_SRGB8_A1:
+    case Format::ETC2_RGBA8:
+    case Format::ETC2_SRGB8_A8:
+    case Format::EAC_R11:
+    case Format::EAC_R11SN:
+    case Format::EAC_RG11:
+    case Format::EAC_RG11SN:
+    case Format::PVRTC_RGB2:
+    case Format::PVRTC_RGBA2:
+    case Format::PVRTC_RGB4:
+    case Format::PVRTC_RGBA4:
+    case Format::ASTC_RGBA_4X4:
+    case Format::ASTC_RGBA_5X4:
+    case Format::ASTC_RGBA_5X5:
+    case Format::ASTC_RGBA_6X5:
+    case Format::ASTC_RGBA_6X6:
+    case Format::ASTC_RGBA_8X5:
+    case Format::ASTC_RGBA_8X6:
+    case Format::ASTC_RGBA_8X8:
+    case Format::ASTC_RGBA_10X5:
+    case Format::ASTC_RGBA_10X6:
+    case Format::ASTC_RGBA_10X8:
+    case Format::ASTC_RGBA_10X10:
+    case Format::ASTC_RGBA_12X10:
+    case Format::ASTC_RGBA_12X12:
+    case Format::ASTC_SRGBA_4X4:
+    case Format::ASTC_SRGBA_5X4:
+    case Format::ASTC_SRGBA_5X5:
+    case Format::ASTC_SRGBA_6X5:
+    case Format::ASTC_SRGBA_6X6:
+    case Format::ASTC_SRGBA_8X5:
+    case Format::ASTC_SRGBA_8X6:
+    case Format::ASTC_SRGBA_8X8:
+    case Format::ASTC_SRGBA_10X5:
+    case Format::ASTC_SRGBA_10X6:
+    case Format::ASTC_SRGBA_10X8:
+    case Format::ASTC_SRGBA_10X10:
+    case Format::ASTC_SRGBA_12X10:
+    case Format::ASTC_SRGBA_12X12:
+        return true;
+    }
+    return false;
+}

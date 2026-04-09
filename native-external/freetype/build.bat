@@ -1,0 +1,2 @@
+cd %~0dp
+cmake ./ -B ./build-freetype -DFT_DISABLE_HARFBUZZ=1 -DFT_DISABLE_ZLIB=1 -DFT_DISABLE_BZIP2=1 -DFT_DISABLE_PNG=1 -DFT_DISABLE_BROTLI=1 -G "CodeBlocks - MinGW Makefiles"

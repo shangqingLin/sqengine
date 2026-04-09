@@ -1,0 +1,7 @@
+
+https://github.com/EsotericSoftware/spine-runtimes
+
+当前使用的版本：
+    Spine版本：4.2.xxx
+
+

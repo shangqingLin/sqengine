@@ -1,0 +1,5 @@
+#include "./components/sprite/SpriteComponent.h"
+#include "./components/Transform2DComponent.h"
+#include "./components/graphics/Graphics.h"
+#include "./components/label/LabelComponent.h"
+#include "./components/particle/Particles2DComponent.h"

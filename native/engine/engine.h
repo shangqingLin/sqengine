@@ -1,0 +1,6 @@
+#include "framework/Application.h"
+#include "assets/index.h"
+#include "scene/Node.h"
+#include "core/core.h"
+#include "2d/2d.h"
+#include "platform/Screen.h"

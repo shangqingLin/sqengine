@@ -1,0 +1,21 @@
+#include "sqstd/sqstd.h"
+#include "./common/number_to_string.h"
+#include "./common/ArrayBuffer.h"
+#include "./common/IDGen.h"
+#include "./common/BufferView.h"
+#include "./utils/texture-hepler.h"
+
+#include "./base/config.h"
+#include "./math/Vec2.h"
+#include "./math/Vec3.h"
+#include "./math/Vec4.h"
+#include "./math/math.h"
+#include "./math/Mat3.h"
+#include "./math/Mat4.h"
+#include "./math/Size.h"
+#include "./math/Color.h"
+#include "./math/FastNoiseLite.h"
+
+#include "./geom/index.h"
+#include "./simd/simd.h"
+

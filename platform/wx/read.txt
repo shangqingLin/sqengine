@@ -1,0 +1,4 @@
+
+1、weap-adapter是由微信官方提供的
+https://developers.weixin.qq.com/minigame/dev/guide/runtime/adapter.html
+

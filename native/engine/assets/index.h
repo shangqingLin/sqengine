@@ -1,0 +1,6 @@
+#include "./AssetManager.h"
+#include "./BuildinResManager.h"
+#include "./RenderTexture.h"
+#include "./Material.h"
+#include "./SpriteFrame.h"
+#include "./Texture2d.h"

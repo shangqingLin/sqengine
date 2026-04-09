@@ -1,0 +1,441 @@
+interface IAttributeInfo{
+	void IAttributeInfo();
+	attribute long format;
+    void setName(DOMString name);
+};
+
+interface ISamplerTextureInfo{
+	void ISamplerTextureInfo();
+    void setName(DOMString name);
+	attribute long binding;
+    attribute long type;
+    attribute long count;
+    attribute boolean buildin;
+};
+
+interface IUniform{
+   void IUniform();	
+   void setName(DOMString name);
+   attribute long type;
+   attribute long count;
+};
+
+interface IBlockInfo{
+	void IBlockInfo();
+	attribute long binding;
+    attribute boolean buildin;
+	void pushMembers(IUniform uniform);
+    void setBlockName(DOMString name);
+};
+
+interface IShaderDefine
+{
+	void IShaderDefine();
+	void pushBlock(IBlockInfo blockInfo);
+	void pushAttribute(IAttributeInfo attributeInfo);
+    void pushSamplerTexture(ISamplerTextureInfo sampler);
+    void pushMacro(DOMString name, long flag);
+};
+
+interface IPassInfo
+{
+    attribute long shaderIndex;
+    attribute DOMString passStateBuffer;
+    void IPassInfo();
+};
+
+interface IEffectDefine{
+    void IEffectDefine();
+    void pushShaderDefine(IShaderDefine info);
+    void pushPassInfo(IPassInfo info);
+};
+
+interface EffectAsset{
+	void EffectAsset(long id);
+    void setKeyUrl(DOMString url);
+	void initialize(IEffectDefine info);
+};
+
+interface IMaterialInfo{
+	void IMaterialInfo();
+    void pushMacro(DOMString name, long value);
+};
+
+interface Material{
+	void Material(long id);
+    void setKeyUrl(DOMString url);
+	void setEffectAsset(EffectAsset effect);
+	void initialize(IMaterialInfo info);
+    void setPropertyBridgeJsTexture(DOMString name, long textureAssetId);
+    void setPropertyBridgeJsFloat(DOMString name, float value);
+    void setPropertyBridgeJsMat4(DOMString name, any value);
+};
+
+interface ITexture2DCreateInfo{
+    void ITexture2DCreateInfo();
+    attribute long width;
+    attribute long height;
+    attribute long format;
+    attribute long mipmapLevel;
+    attribute long samplerHash;
+};
+
+interface Texture2d{
+   void Texture2d(long id);
+   void setKeyUrl(DOMString url);
+   void create(ITexture2DCreateInfo info);
+   void uploadData();
+   void resize(long width,long height);
+   void setSamplerFromJs(long hash);
+};
+
+interface RenderTexture
+{
+    void RenderTexture(long id);
+    void initiliazeFormJS(DOMString data);
+};
+
+interface Spine{
+    void Spine(long id);
+    void setKeyUrl(DOMString url);
+    void parseBuffer(DOMString buffer,long size);
+    long getAnimatoinCount();
+    any getAllAnimationNames();
+    void setTextures(DOMString buffer,long count);
+};
+
+interface FreeTypeFont{
+    void FreeTypeFont(long id);
+    void setKeyUrl(DOMString url);
+    void loadFontFile(DOMString data, long size);
+};
+
+//----------------------引擎核心----------------------------
+
+interface WebGLDevice{
+    void WebGLDevice();
+    void initializeCapability(DOMString data);
+};
+
+interface WebGL2Device{
+    void WebGL2Device();
+    void initializeCapability(DOMString data);
+};
+
+interface System{
+
+};
+
+[Prefix="pipeline::"]
+interface RenderPipeline
+{
+};
+
+[Prefix="pipeline::"]
+interface FireGameRenderPipeline : RenderPipeline
+{
+    void FireGameRenderPipeline();
+    void enableWashRender(boolean b,long waterMarkMaterialId);
+};
+
+
+interface Application{
+    void Application();
+    void initialize();
+    void update();
+    void postUpdate();
+    void registerSystem(System system);
+    void setRenderPipeline(RenderPipeline pipeline);
+};
+
+interface InputManager{
+    void InputManager();
+    void setEventDataPointer(DOMString pointer,long size);
+    void update();
+};
+
+interface Screen {
+    void Screen();
+    void setRenderSize(long width, long height);
+    void setDesignSize(long width, long height);
+};
+
+//-------------------------物理引擎--------------------
+[Prefix="physics2d::"]
+interface PhysicsSystem : System {
+    void PhysicsSystem();
+};
+
+//---------------骨骼动画--------------------------
+interface SkeletonSystem : System {
+    void SkeletonSystem();
+};
+
+//-------------Tween-----------------------------
+interface TweenSystem : System
+{
+    void TweenSystem();
+};
+
+//----------------------game------------------
+[Prefix="game::"]
+interface Truck
+{
+    void Truck();
+    void initFromJs(DOMString data,long partCount);
+    void setLift(long distance);
+    void moveForward();
+    void moveBack();
+    void stop();
+    void setSpeed(long speed);
+    void setSlop(long min, long max);
+    void setCollisionFilter(long categoryBits, long maskBits);
+    void sparge();
+    void stopSpare();
+    void setFluidMaterial(long id,long renderType);
+    void setCollisionFuildFilter(long group,long mask);
+    void setWaterParticleAmout(long amout);
+    void setFuildViewportPos(float x, float y);
+    void setFuildViewportSize(float x, float y);
+    void playExplosion();
+    void recoveryFormExposion();
+    void active(boolean active);
+    void setSpareSpeed(long speed);
+};
+
+
+[Prefix="game::"]
+interface Level_1
+{
+    void Level_1();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+[Prefix="game::"]
+interface Level_2
+{
+    void Level_2();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+[Prefix="game::"]
+interface Level_3
+{
+    void Level_3();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+
+[Prefix="game::"]
+interface Level_4
+{
+    void Level_4();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+
+[Prefix="game::"]
+interface Level_5
+{
+    void Level_5();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+
+[Prefix="game::"]
+interface Level_6
+{
+    void Level_6();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+
+[Prefix="game::"]
+interface Level_7
+{
+    void Level_7();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+
+[Prefix="game::"]
+interface Level_8
+{
+    void Level_8();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+
+[Prefix="game::"]
+interface Level_9
+{
+    void Level_9();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+
+[Prefix="game::"]
+interface Level_C1_10
+{
+    void Level_C1_10();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+
+[Prefix="game::"]
+interface Level_C1_11
+{
+    void Level_C1_11();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+
+[Prefix="game::"]
+interface Level_C1_12
+{
+    void Level_C1_12();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+
+[Prefix="game::"]
+interface Level_C1_13
+{
+    void Level_C1_13();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+[Prefix="game::"]
+interface Level_C1_14
+{
+    void Level_C1_14();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+[Prefix="game::"]
+interface Level_C1_15
+{
+    void Level_C1_15();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+[Prefix="game::"]
+interface Level_C1_16
+{
+    void Level_C1_16();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+[Prefix="game::"]
+interface Level_C1_17
+{
+    void Level_C1_17();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+[Prefix="game::"]
+interface Level_C1_18
+{
+    void Level_C1_18();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+[Prefix="game::"]
+interface Level_C1_19
+{
+    void Level_C1_19();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+[Prefix="game::"]
+interface Level_C1_20
+{
+    void Level_C1_20();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+[Prefix="game::"]
+interface Level_C1_21
+{
+    void Level_C1_21();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+[Prefix="game::"]
+interface Level_C1_22
+{
+    void Level_C1_22();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+[Prefix="game::"]
+interface Level_C1_23
+{
+    void Level_C1_23();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+[Prefix="game::"]
+interface Level_C1_24
+{
+    void Level_C1_24();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
+[Prefix="game::"]
+interface Level_C1_25
+{
+    void Level_C1_25();
+    void init();
+    long cut(float x1, float y1, float x2, float y2);
+    void setParentNodeFromJs(long nativeId);
+};
+
