@@ -1,6 +1,7 @@
 # SQENGINE
 一个2D H5游戏引引擎，完全使用C++开发，TypeScript作为前端调用接口，使用Emscriptent工具编译成WebAssembly(Wasm)运行的游戏引擎，相比使用纯JavaScript开发的游戏引擎最少快3倍。
-
+使用ECS（Entity-Component-System） 实体-组件结构。
+---
 支持：
 - 基于FreeType的文本渲染
 - 精灵Sprite
